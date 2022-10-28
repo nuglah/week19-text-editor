@@ -25,12 +25,14 @@ module.exports = () => {
       new WebpackPwaManifest({
         name: "Text Editor",
         short_name: "text_editor",
-        // inject: true,
+        inject: true,
+        display: "standalone",
         description: "really cool text editor",
         background_color: "#ffffff",
         theme_color: "#ffffff",
-        start_url: "./",
-        publicPath: "./",
+        start_url: "/",
+        publicPath: "/",
+        fingerprints: false,
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
@@ -58,6 +60,10 @@ module.exports = () => {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
             },
           },
         },
