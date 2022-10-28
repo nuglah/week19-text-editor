@@ -26,12 +26,11 @@ module.exports = () => {
         name: "Text Editor",
         short_name: "text_editor",
         inject: true,
-        display: "standalone",
         description: "really cool text editor",
         background_color: "#ffffff",
         theme_color: "#ffffff",
-        start_url: "/",
-        publicPath: "/",
+        start_url: "./",
+        publicPath: "./",
         fingerprints: false,
         icons: [
           {
@@ -55,7 +54,8 @@ module.exports = () => {
         },
         {
           test: /\.m?js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
           use: {
             loader: "babel-loader",
             options: {
